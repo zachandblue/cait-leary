@@ -1,5 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Abel');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+
+
+
 html {
-  font-family: sans-serif;
+  font-family: "Source Code Pro", monospace;
+  text-transform: uppercase;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -34,7 +44,7 @@ audio:not([controls]) {
 }
 progress {
   vertical-align: baseline;
-}
+} 
 [hidden],
 template {
   display: none;
@@ -200,7 +210,7 @@ html {
 }
 body {
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: georgia, serif;
+  /* font-family: georgia, serif; */
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;

@@ -1,11 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `Cait Leary`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-netlify`,
     `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-styled-components`,
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -14,9 +17,16 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-remote-images`,
+      options: {
+        nodeType: "myNodes",
+        imagePath: "path.to.image",
+      },
+    },
+    {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: "http://localhost:8080",
+        baseUrl: "http://www.zachandbluebackend.com/bandpage",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
@@ -40,4 +50,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
   ],
-}
+};

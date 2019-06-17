@@ -1,21 +1,44 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
+import { useSpring, animated } from "react-spring";
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import Doors from "../components/Doors";
+import Layout from "../components/layout";
+import About from "../components/About";
+import TourDates from "../components/TourDates";
+import MusicPlayer from "../components/MusicPlayer";
+import SEO from "../components/seo";
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+import { sameSite } from "../components/GlobalState";
 
-export default IndexPage
+const IndexPage = ({ location }) => {
+  const [isNavOpen, setNavOpen] = useState(sameSite !== "no" ? false : true);
+  const navAnimation = useSpring({
+    transform: isNavOpen
+      ? `translate3d(0,0,0) scale(1) `
+      : `translate3d(100%,100%,0) scale(0.6)`,
+  });
+  const fade = useSpring({
+    from: {
+      opacity: 0,
+    },
+    opacity: 1,
+  });
+
+  // useEffect(() => {
+  //   if (sameSite !== "no") {
+  //     setNavOpen(false);
+  //   }
+  // });
+  return (
+    <Layout location={location} isNavOpen={isNavOpen}>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <About />
+      <MusicPlayer />
+      <TourDates />
+      <Doors isOpen={isNavOpen} setNavOpen={setNavOpen} />
+    </Layout>
+  );
+};
+
+export default IndexPage;
