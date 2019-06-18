@@ -43,11 +43,12 @@ const NavItem = styled(animated.div)`
 
 const Header = ({ siteTitle, menu, location, sideNav }) => {
   let innerWidth = 0;
-  if (typeof window !== 'undefined' && window) {
+  if (typeof window !== "undefined" && window) {
     if (window.innerWidth) {
       innerWidth = window.innerWidth;
     }
   }
+
   const [width, setWidth] = useState(innerWidth);
   const { x } = useSpring({
     x: sideNav ? 0 : 100,
@@ -59,6 +60,7 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
     height: sideNav ? 180 : 0,
     from: { opacity: 0, x: 20, height: 0 },
   });
+
   useEffect(() => {
     const handleResize = () => {
       setWidth(window.innerWidth);
@@ -68,6 +70,7 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   return (
     <HeaderNav
       style={
