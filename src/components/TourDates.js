@@ -74,7 +74,7 @@ const TourDates = () => (
           {data.allWordpressWpTourDates.edges.map(item => {
             return (
               <TourDate key={item.node.id}>
-                <p>{moment(item.node.date).format("MMM Do YYYY")}</p>
+                <p>{moment(item.node.acf.date).format("MMM Do YYYY")}</p>
                 <p>{item.node.acf.venue}</p>
                 <p>{item.node.acf.city}</p>
               </TourDate>
