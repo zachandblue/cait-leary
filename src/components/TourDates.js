@@ -59,6 +59,7 @@ const TourDates = () => (
               id
               date
               acf {
+                date
                 venue
                 city
               }
