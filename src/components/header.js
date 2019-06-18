@@ -42,7 +42,7 @@ const NavItem = styled(animated.div)`
 `;
 
 const Header = ({ siteTitle, menu, location, sideNav }) => {
-  let innerWidth = 0;
+  let innerWidth = 601;
   if (typeof window !== "undefined" && window) {
     if (window.innerWidth) {
       innerWidth = window.innerWidth;
