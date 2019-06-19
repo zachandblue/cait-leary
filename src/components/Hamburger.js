@@ -16,6 +16,10 @@ const Wrapper = styled.button`
   &:focus {
     outline: none;
   }
+  &:hover {
+    transform: scale(1.1);
+  }
+
   .top-bun {
     transform: rotate(45deg);
     transform-origin: 1% 100%;

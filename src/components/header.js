@@ -28,13 +28,17 @@ const HeaderNav = styled(animated.header)`
 
 const NavItem = styled(animated.div)`
   a {
-    color: #f9e9dd;
     color: ${colors.light};
     font-family: "Source Code Pro", monospace;
     font-weight: 400;
     text-decoration: none !important;
     padding: 1.5rem;
     font-size: 18px;
+    &:hover {
+      color: white;
+      filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
+    }
+
     @media only screen and (max-width: 600px) {
       font-size: 1.75rem;
     }

@@ -18,9 +18,10 @@ const Wrapper = styled.div`
     color: ${colors.light};
     text-align: center;
     font-family: "Abel";
+    font-size: 50px;
     /* text-transform: none; */
     width: 100%;
-    text-shadow: 4px 4px 4px black;
+    /* text-shadow: 1px 1px 1px black; */
     margin-bottom: 30px;
   }
   p {
@@ -28,14 +29,29 @@ const Wrapper = styled.div`
     text-align: center;
     font-family: "Abel";
     text-transform: none;
-    font-weight: bold;
-    text-shadow: 4px 4px 4px black;
+    /* font-weight: bold; */
+    /* text-shadow: 1px 1px 1px black; */
     margin: 40px 0;
-    font-size: 20px;
+    font-size: 26px;
+    @media only screen and (max-width: 600px) {
+      max-width: 90%;
+    }
   }
   .gatsby-image-wrapper {
-    min-height: 45rem;
+    min-height: 100vh;
     z-index: -1;
+    /* filter: blur(5px);
+
+    
+filter: contrast(200%);
+filter: drop-shadow(16px 16px 20px blue);
+filter: grayscale(50%);
+filter: hue-rotate(90deg);
+filter: invert(75%);
+filter: opacity(25%);
+filter: saturate(30%);
+filter: sepia(60%); */
+    filter: sepia(0%) brightness(0.4) saturate(350%);
   }
   .socials {
     width: 300px;
@@ -61,17 +77,23 @@ const Wrapper = styled.div`
     left: 0;
     height: 100vh;
     width: 100vw;
-    background-color: rgba(20, 15, 10, 0.1);
+    /* background: linear-gradient(
+      90deg,
+      rgba(20, 15, 10, 0.7),
+      rgba(20, 15, 10, 0.9)
+    ); */
     z-index: 90;
   }
 `;
 
 const FormWrapper = styled.form`
   position: absolute;
+  /* flex-direction: column; */
+
   top: 50%;
   left: 50%;
   transform: translate3d(-50%, -50%, 0);
-  width: 300px;
+  width: 400px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -85,13 +107,16 @@ const FormWrapper = styled.form`
 `;
 
 const Input = styled.input`
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.33);
   border: none;
   padding: 12px 10px;
   flex: 3;
   position: relative;
   color: ${colors.light};
   font-weight: 600;
+  min-width: 150px;
+  flex-wrap: wrap;
+
   &::placeholder {
     color: white;
     opacity: 0.75;
@@ -101,14 +126,14 @@ const Input = styled.input`
   }
   @media only screen and (max-width: 600px) {
     order: 1;
-    width: 100%;
+    width: 90%;
   }
 `;
 
 const Button = styled.button`
   flex: 1;
   margin-left: 10px;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.33);
   border: none;
   padding: 12px 11px;
   color: white;
@@ -125,7 +150,7 @@ const Button = styled.button`
     flex: 3;
     margin-left: 0;
     margin-top: 10px;
-    width: 100%;
+    width: 90%;
   }
 `;
 
@@ -145,10 +170,12 @@ const InputBody = styled.textarea`
     outline: 1px solid white;
   }
   height: 100px;
-  width: 300px;
+  min-width: 400px;
   margin-top: 10px;
   @media only screen and (max-width: 600px) {
     order: 2;
+    min-width: 290px;
+    width: 90%;
   }
 `;
 
@@ -220,7 +247,7 @@ export default class Page extends Component {
       <StaticQuery
         query={graphql`
           query ContactPageQuery {
-            file(relativePath: { regex: "/bwcrop/" }) {
+            file(relativePath: { regex: "/Cait3/" }) {
               childImageSharp {
                 fluid(maxHeight: 800) {
                   ...GatsbyImageSharpFluid_tracedSVG

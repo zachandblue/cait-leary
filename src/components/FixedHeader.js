@@ -13,6 +13,10 @@ const NavItem = styled.div`
     text-decoration: none !important;
     padding: 1.5rem;
     font-size: 18px;
+    &:hover {
+      color: white;
+      filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
+    }
   }
 `;
 
@@ -23,9 +27,13 @@ const Header = styled.header`
   z-index: 150;
   width: 100%;
   transition: opacity 1.5s;
-  &.show {
+  &:hover {
     opacity: 1;
   }
+  &.show {
+    opacity: 1 !important;
+  }
+
   @media only screen and (max-width: 600px) {
     display: none;
   }
@@ -58,7 +66,7 @@ class FixedHeader extends Component {
       this.setState({ show: true, pageYOffset: window.pageYOffset });
       this.hideMenu();
     }
-    if (window.pageYOffset === 0) {
+    if (window.pageYOffset <= 100) {
       this.setState({ show: false });
     }
   };

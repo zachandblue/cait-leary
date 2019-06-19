@@ -24,7 +24,7 @@ const TourDatesSection = styled.section`
   background-size: 30px 30px, 90px 90px;
   background-position: 0 0; */
   color: ${colors.dark};
-  min-height: 500px;
+  min-height: 400px;
 
   h2 {
     width: 80%;
@@ -41,6 +41,11 @@ const TourDatesList = styled.div`
   max-width: 800px;
   margin: auto;
   padding: 2rem;
+  @media only screen and (max-width: 600px) {
+    padding: 0.5rem;
+    width: 95%;
+    max-width: 600px;
+  }
 `;
 const TourDate = styled.div`
   display: flex;

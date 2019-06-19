@@ -91,8 +91,8 @@ const HeroWrapper = styled.div`
         color: #471548;
       }
       @media only screen and (max-width: 750px) {
-        font-size: 2rem;
-        padding: 1rem 1rem;
+        font-size: 1.65rem;
+        padding: 0.8rem 0.8rem;
       }
       @media only screen and (max-width: 600px) {
         margin-top: 8rem;
@@ -133,13 +133,16 @@ const Footer = styled.footer`
     justify-content: space-around;
     align-items: center;
     z-index: 350;
+    
   }
   .social {
     padding: 1px;
     font-size: 2rem;
-    /* &.socials > * {
-      padding: 5px;
-    } */
+    transition: all .2s;
+    &:hover {
+      color: white;
+      transform: scale(1.1)
+    }
   }
   .copyright {
     z-index: 350;
