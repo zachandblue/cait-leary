@@ -301,7 +301,7 @@ export default class Page extends Component {
                 <p style={{ order: 4 }}>
                   Whether you're a fan of my music or you just would like to say
                   hi, I'd love to hear from you. Follow me on social media or
-                  simply use this contact form to send meta an email.
+                  simply use this contact form to send me an email.
                 </p>
 
                 <div className="socials" style={{ order: 5 }}>

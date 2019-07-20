@@ -32,10 +32,17 @@ const IndexPage = ({ location }) => {
   // });
   return (
     <Layout location={location} isNavOpen={isNavOpen}>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-      <About />
-      <MusicPlayer />
-      <TourDates />
+      <SEO
+        title="Home"
+        keywords={[`Cait`, `Leary`, `Nashville`, `songwriter`, `singer`]}
+      />
+      {!isNavOpen ? (
+        <>
+          <About />
+          <MusicPlayer />
+          <TourDates />
+        </>
+      ) : null}
       <Doors isOpen={isNavOpen} setNavOpen={setNavOpen} />
     </Layout>
   );

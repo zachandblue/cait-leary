@@ -39,9 +39,9 @@ const LyricsWrapper = styled.div`
 
 const Lyrics = ({ progress, activeKey }) => {
   const lyrics = getLyrics();
-  const [items, setItems] = useState(lyrics);
-  const [sdprogress, incrementProgress] = useState(0);
-  const [aactiveKey, incrementKey] = useState(0);
+  // const [items, setItems] = useState(lyrics);
+  // const [sdprogress, incrementProgress] = useState(0);
+  // const [aactiveKey, incrementKey] = useState(0);
 
   const scroll = useSpring({
     from: {
@@ -50,12 +50,12 @@ const Lyrics = ({ progress, activeKey }) => {
     transform: `translateY(-${progress}rem )`,
   });
 
-  const fade = useSpring({
-    from: {
-      opacity: 0,
-    },
-    opacity: 1,
-  });
+  // const fade = useSpring({
+  //   from: {
+  //     opacity: 0,
+  //   },
+  //   opacity: 1,
+  // });
 
   return (
     <Fragment>
