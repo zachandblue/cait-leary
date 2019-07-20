@@ -336,13 +336,3 @@ export default class Page extends Component {
     );
   }
 }
-
-// export const query = graphql`
-//   query PageQuery($slug: String) {
-//     wordpressPage(slug: { eq: $slug }) {
-//       title
-//       slug
-//       content
-//     }
-//   }
-// `;

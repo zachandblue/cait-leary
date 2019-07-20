@@ -9,7 +9,7 @@ import { colors } from "../styles/variables";
 const HeaderNav = styled(animated.header)`
   background: linear-gradient(rgba(30, 10, 10, 0.7), rgba(20, 20, 20, 0));
   position: absolute;
-  z-index: 150;
+  z-index: 500;
   width: 100%;
   @media only screen and (max-width: 600px) {
     background: rgba(40, 35, 35, 0.9);
