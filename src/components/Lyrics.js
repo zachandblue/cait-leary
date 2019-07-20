@@ -62,7 +62,7 @@ const Lyrics = ({ progress, activeKey }) => {
       <LyricsWrapper>
         {Object.keys(lyrics).map(key => (
           <animated.p
-            style={scroll}
+            // style={scroll}
             key={key}
             style={{
               ...scroll,

@@ -7,7 +7,7 @@ import styled from "styled-components";
 import { colors } from "../styles/variables";
 
 const HeaderNav = styled(animated.header)`
-  background: linear-gradient(rgba(30, 10, 10, 0.8), rgba(20, 20, 20, 0));
+  background: linear-gradient(rgba(30, 10, 10, 0.7), rgba(20, 20, 20, 0));
   position: absolute;
   z-index: 150;
   width: 100%;
@@ -87,8 +87,13 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
     >
       <div
         style={{
-          margin: `0 auto`,
+          // margin: `0 auto`,
+          marginTop: 0,
+          marginBottom: 0,
+          marginLeft: "auto",
+          marginRight: "auto",
           padding: `1.45rem 1.0875rem`,
+          // padding: "1rem",
           position: "relative",
         }}
       >
@@ -98,12 +103,24 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
             justifyContent: "center",
           }}
         >
-          <NavItem style={trail}>
+          <NavItem>
             <Link to="/">Home</Link>
           </NavItem>
+
+          {/* {trail.map(({ x, height, ...rest }, index) => (
+            <NavItem
+              style={{
+                ...rest,
+                transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+              }}
+              key={`1`}
+            >
+              <Link to="/">Home</Link>
+            </NavItem>
+          ))} */}
           {!sideNav
             ? menu.map(item => (
-                <NavItem style={trail} key={`/${item.object_slug}`}>
+                <NavItem key={`/${item.object_slug}`}>
                   <Link
                     key={`/${item.object_slug}`}
                     to={`/${item.object_slug}`}
@@ -125,6 +142,19 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
                   </Link>
                 </NavItem>
               ))}
+          {/* {trail.map(({ x, height, ...rest }, index) => (
+            <NavItem
+              style={{
+                ...rest,
+                transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
+              }}
+              key={`/${menu[index].object_slug}`}
+            >
+              <Link to={`/${menu[index].object_slug}`}>
+                {menu[index].title}
+              </Link>
+            </NavItem>
+          ))} */}
         </nav>
       </div>
     </HeaderNav>

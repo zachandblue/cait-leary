@@ -243,7 +243,6 @@ const Layout = ({ children, location, isNavOpen }) => {
           />
           <Hamburger
             onClick={() => {
-              console.log("asdf");
               toggleSideNav(!sideNav);
             }}
             sideNav={sideNav}
