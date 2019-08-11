@@ -65,6 +65,10 @@ const ParagraphText = styled.p`
   margin: 0 auto;
   padding: 0 0 2rem 0;
   text-align: center;
+  @media only screen and (max-width: 600px) {
+    /* padding: 10rem 0 0; */
+    display: none;
+  }
 `;
 
 const MusicSection = styled.section`
