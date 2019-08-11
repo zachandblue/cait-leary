@@ -32,7 +32,7 @@ const Wrapper = styled.div`
   z-index: -1;
 
   @media only screen and (max-width: 950px) {
-    padding: 0 0 7rem;
+    padding: 0 0 9rem;
   }
   @media only screen and (max-width: 600px) {
     /* padding: 10rem 0 0; */
