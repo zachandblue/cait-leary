@@ -9,8 +9,8 @@ const Wrapper = styled.button`
   background: transparent;
   border: none;
   position: absolute;
-  z-index: 150;
-  right: 45px;
+  z-index: 850;
+  right: 15px;
   top: 20px;
   transition: all 0.5s;
   &:focus {

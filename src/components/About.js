@@ -11,13 +11,23 @@ const AboutSection = styled.section`
   background: ${colors.light};
   color: ${colors.dark};
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  @media only screen and (max-width: 600px) {
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+  /* grid-template-columns: 1fr 1fr; */
+  /* @media only screen and (max-width: 600px) { */
+  grid-template-columns: 1fr;
+  /* grid-template-rows: 1fr 1fr 1fr; */
+  /* } */
+
+  h2 {
+    width: 80%;
+    max-width: 400px;
+    padding: 2rem 0;
+    margin: 0 auto;
+    font-size: 3rem;
+    font-family: Abel;
+    text-align: center;
   }
 
-  min-height: 500px;
+  /* min-height: 500px; */
   .left {
     align-self: center;
     justify-self: center;
@@ -25,6 +35,7 @@ const AboutSection = styled.section`
     width: 300px;
     h1 {
       font-family: Abel;
+      margin: 40px;
     }
     p {
       font-family: "Source Code Pro", monospace;
@@ -59,11 +70,14 @@ const AboutSection = styled.section`
     .gatsby-image-wrapper {
       align-self: center;
       justify-self: center;
-      height: 350px;
-      width: 350px;
+      height: 650px;
+      width: 650px;
+      margin-bottom: 20vh;
+
       @media only screen and (max-width: 600px) {
         height: auto;
         width: 100%;
+        margin-bottom: 0vh;
       }
     }
   }
@@ -126,7 +140,7 @@ const About = () => {
             {/* <Img fluid={data.file.childImageSharp.fluid} /> */}
           </ImageWrapper>
           <animated.div className="left" style={fade}>
-            <h1 ref={aboutDiv}>{data.wordpressWpAbout.title}</h1>
+            <h2 ref={aboutDiv}>{data.wordpressWpAbout.title}</h2>
             <p>{data.wordpressWpAbout.acf.about}</p>
           </animated.div>
           <animated.div className="right" style={fade}>
@@ -138,7 +152,7 @@ const About = () => {
             />
           </animated.div>
           <animated.div className="left mobile-only" style={fade}>
-            <h1 ref={aboutDiv}>New Single</h1>
+            <h2 ref={aboutDiv}>New Single</h2>
             <p>I don't want to fall in love again</p>
           </animated.div>
         </AboutSection>

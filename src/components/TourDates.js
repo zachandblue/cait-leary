@@ -29,7 +29,7 @@ const TourDatesSection = styled.section`
   h2 {
     width: 80%;
     max-width: 400px;
-    padding: 4rem 0;
+    padding: 4rem 0 2rem;
     margin: 0 auto;
     font-size: 3rem;
     font-family: Abel;
@@ -73,22 +73,27 @@ const TourDates = () => (
         }
       }
     `}
-    render={data => (
-      <TourDatesSection>
-        <h2>Tour Dates</h2>
-        <TourDatesList>
-          {data.allWordpressWpTourDates.edges.map(item => {
-            return (
-              <TourDate key={item.node.id}>
-                <p>{moment(item.node.acf.date).format("MMM Do YYYY")}</p>
-                <p>{item.node.acf.venue}</p>
-                <p>{item.node.acf.city}</p>
-              </TourDate>
-            );
-          })}
-        </TourDatesList>
-      </TourDatesSection>
-    )}
+    render={data => {
+      const filteredByDate = data.allWordpressWpTourDates.edges.sort((a, b) => {
+        return new Date(b.node.acf.date) - new Date(a.node.acf.date);
+      });
+      return (
+        <TourDatesSection>
+          <h2>Tour Dates</h2>
+          <TourDatesList>
+            {filteredByDate.map(item => {
+              return (
+                <TourDate key={item.node.id}>
+                  <p>{moment(item.node.acf.date).format("MMM Do YYYY")}</p>
+                  <p>{item.node.acf.venue}</p>
+                  <p>{item.node.acf.city}</p>
+                </TourDate>
+              );
+            })}
+          </TourDatesList>
+        </TourDatesSection>
+      );
+    }}
   />
 );
 

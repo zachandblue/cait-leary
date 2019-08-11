@@ -12,7 +12,7 @@ import ScrollableAnchor from "react-scrollable-anchor";
 import Lyrics from "./Lyrics";
 
 const Wrapper = styled.div`
-  padding: 6rem 6rem;
+  padding: 0rem 6rem 10rem;
   background: ${colors.dark};
   background: #1b1d1c;
   background-color: white;
@@ -30,13 +30,41 @@ const Wrapper = styled.div`
   background-size: 30px 30px, 90px 90px;
   background-position: 0 0;
   z-index: -1;
-  @media only screen and (max-width: 900px) {
-    padding: 0;
+
+  @media only screen and (max-width: 950px) {
+    padding: 0 0 7rem;
   }
   @media only screen and (max-width: 600px) {
     /* padding: 10rem 0 0; */
     background: #1b1d1c;
+    padding: 0;
   }
+`;
+
+const H2Text = styled.h2`
+  width: 80%;
+  color: ${colors.light};
+  max-width: 400px;
+  padding: 2rem 0;
+  margin: 0 auto;
+  font-size: 3rem;
+  font-family: Abel;
+  text-align: center;
+  @media only screen and (max-width: 600px) {
+    /* padding: 10rem 0 0; */
+    display: none;
+  }
+`;
+
+const ParagraphText = styled.p`
+  font-family: "Source Code Pro", monospace;
+  line-height: 35px;
+  color: ${colors.light};
+  width: 400px;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 0 2rem 0;
+  text-align: center;
 `;
 
 const MusicSection = styled.section`
@@ -473,6 +501,8 @@ class MusicPlayer extends Component {
         `}
         render={data => (
           <Wrapper>
+            <H2Text>New Single</H2Text>
+            <ParagraphText>I Don't Want To Fall In Love Again</ParagraphText>
             <MusicSection>
               <AbsoluteWrapper>
                 <TitleTextWrapper>

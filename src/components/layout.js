@@ -26,12 +26,13 @@ configureAnchors({
   keepLastAnchorHash: true,
 });
 
-const HeroWrapper = styled.div`
+export const HeroWrapper = styled.div`
   width: 100%;
   position: relative;
   overflow: hidden;
   .gatsby-image-wrapper {
     height: 55vw;
+    height: 100vh;
 
     div {
       padding-bottom: 55%;
@@ -237,7 +238,7 @@ const Layout = ({ children, location, isNavOpen }) => {
             menu={data.wordpressWpApiMenusMenusItems.items}
             location={location}
             sideNav={sideNav}
-            toggleSidNav={toggleSideNav}
+            toggleSidNav={() => toggleSideNav(false)}
           />
           <FixedHeader
             siteTitle={data.site.siteMetadata.title}
@@ -273,37 +274,34 @@ const Layout = ({ children, location, isNavOpen }) => {
             }}
           >
             <main style={{ overflow: "hidden" }}>{children}</main>
-            {location &&
-              !location.pathname.includes("/contact") &&
-              !location.pathname.includes("/sample-page") &&
-              !isNavOpen && (
-                <Footer>
-                  <div className="socials">
-                    <a
-                      href="https://www.instagram.com/caitleary/"
-                      target="_blank"
-                    >
-                      <FaInstagram className="social" />
-                    </a>
-                    <a
-                      href="https://www.facebook.com/CaitLearyMusic"
-                      target="_blank"
-                    >
-                      <FaFacebook className="social" />
-                    </a>
-                    <a href="https://twitter.com/caitleary" target="_blank">
-                      <FaTwitter className="social" />
-                    </a>
-                  </div>
-                  <div className="copyright">
-                    © {new Date().getFullYear()} Cait Leary{" "}
-                  </div>
-                  <div className="overlay" />
-                  <ImageWrapper>
-                    <Img fluid={data.image2.childImageSharp.fluid} />
-                  </ImageWrapper>
-                </Footer>
-              )}
+            {location && !location.pathname.includes("/contact") && !isNavOpen && (
+              <Footer>
+                <div className="socials">
+                  <a
+                    href="https://www.instagram.com/caitleary/"
+                    target="_blank"
+                  >
+                    <FaInstagram className="social" />
+                  </a>
+                  <a
+                    href="https://www.facebook.com/CaitLearyMusic"
+                    target="_blank"
+                  >
+                    <FaFacebook className="social" />
+                  </a>
+                  <a href="https://twitter.com/caitleary" target="_blank">
+                    <FaTwitter className="social" />
+                  </a>
+                </div>
+                <div className="copyright">
+                  © {new Date().getFullYear()} Cait Leary{" "}
+                </div>
+                <div className="overlay" />
+                <ImageWrapper>
+                  <Img fluid={data.image2.childImageSharp.fluid} />
+                </ImageWrapper>
+              </Footer>
+            )}
           </div>
         </>
       )}

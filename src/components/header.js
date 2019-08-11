@@ -54,8 +54,8 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
   }
 
   const [width, setWidth] = useState(innerWidth);
-  const { x } = useSpring({
-    x: sideNav ? 0 : 100,
+  const { X } = useSpring({
+    X: sideNav ? 0 : 100,
   });
 
   const trail = useTrail(2, {
@@ -81,7 +81,7 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
         width > 600
           ? {}
           : {
-              transform: x.interpolate(x => `translate3d(${x * -1}%, 0, 0)`),
+              transform: X.interpolate(X => `translate3d(${X * -1}%, 0, 0)`),
             }
       }
     >
@@ -118,18 +118,9 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
               <Link to="/">Home</Link>
             </NavItem>
           ))} */}
-          {!sideNav
-            ? menu.map(item => (
-                <NavItem key={`/${item.object_slug}`}>
-                  <Link
-                    key={`/${item.object_slug}`}
-                    to={`/${item.object_slug}`}
-                  >
-                    {item.title}
-                  </Link>
-                </NavItem>
-              ))
-            : trail.map(({ x, height, ...rest }, index) => (
+
+          {sideNav
+            ? trail.map(({ x, height, ...rest }, index) => (
                 <NavItem
                   style={{
                     ...rest,
@@ -139,6 +130,16 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
                 >
                   <Link to={`/${menu[index].object_slug}`}>
                     {menu[index].title}
+                  </Link>
+                </NavItem>
+              ))
+            : menu.map(item => (
+                <NavItem key={`/${item.object_slug}`}>
+                  <Link
+                    key={`/${item.object_slug}`}
+                    to={`/${item.object_slug}`}
+                  >
+                    {item.title}
                   </Link>
                 </NavItem>
               ))}

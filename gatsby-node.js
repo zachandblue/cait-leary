@@ -32,13 +32,23 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
         reject(result.errors);
       }
       result.data.allWordpressPage.edges.forEach(({ node }) => {
-        createPage({
-          path: node.slug,
-          component: path.resolve("./src/templates/page.js"),
-          context: {
-            slug: node.slug,
-          },
-        });
+        if (node.slug === "contact") {
+          createPage({
+            path: node.slug,
+            component: path.resolve("./src/templates/page.js"),
+            context: {
+              slug: node.slug,
+            },
+          });
+        } else if (node.slug === "the-bad") {
+          createPage({
+            path: `${node.slug}`,
+            component: path.resolve("./src/templates/the-bad.js"),
+            context: {
+              slug: node.slug,
+            },
+          });
+        }
       });
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
