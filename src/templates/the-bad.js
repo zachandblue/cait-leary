@@ -1,13 +1,15 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
+import { useTransition } from "react-spring";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import BackgroundImage from "gatsby-background-image";
-
 import styled from "styled-components";
 import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
 
 import Layout, { HeroWrapper } from "../components/layout";
 import ImageViewer from "../components/ImageViewer";
+import Modal from "../components/Modal";
+
 import SEO from "../components/seo";
 import { colors } from "../styles/variables";
 
@@ -150,7 +152,7 @@ const ImageContainer = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-auto-rows: 200px; */
 
-  .gatsby-image-wrapper {
+  .photo {
     align-self: center;
     justify-self: center;
     /* min-height: 200px;
@@ -160,6 +162,22 @@ const ImageContainer = styled.div`
     max-height: 450px;
     height: 250px;
     margin: 10px;
+    @media only screen and (max-width: 600px) {
+      height: auto;
+      width: 100%;
+    }
+  }
+
+  .gatsby-image-wrapper {
+    align-self: center;
+    justify-self: center;
+    /* min-height: 200px;
+    max-height: 400px; */
+    width: 250px;
+    height: auto;
+    max-height: 450px;
+    height: 250px;
+    /* margin: 10px; */
     /* transition: 1s all linear; */
 
     img {
@@ -187,13 +205,26 @@ const ImageContainer = styled.div`
 export default class TheBad extends Component {
   state = {
     loading: false,
+    modal: false,
+    fluid: "",
+  };
+
+  toggleModal = image => {
+    this.setState({ modal: !this.state.modal, fluid: image });
   };
 
   componentDidMount() {}
 
   render() {
     const { data, location } = this.props;
-    const { email, text, loading, phoneNumber6tY4bPYk } = this.state;
+    const {
+      email,
+      text,
+      loading,
+      phoneNumber6tY4bPYk,
+      modal,
+      fluid,
+    } = this.state;
     return (
       <StaticQuery
         query={graphql`
@@ -241,6 +272,9 @@ export default class TheBad extends Component {
         render={data => (
           <Layout location={location}>
             <SEO title={data.wordpressPage.title} />
+            <Modal toggle={this.toggleModal} on={modal}>
+              <Img fluid={fluid} />
+            </Modal>
             <Wrapper>
               <HeroWrapper>
                 <div className="overlay" />
@@ -279,12 +313,24 @@ export default class TheBad extends Component {
                 <ImageContainer>
                   {data.allWordpressWpImage.edges.map(item => {
                     return (
-                      <Img
-                        fluid={
-                          item.node.featured_media.localFile.childImageSharp
-                            .fluid
+                      <div
+                        className="photo"
+                        onClick={() =>
+                          this.toggleModal(
+                            item.node.featured_media.localFile.childImageSharp
+                              .fluid
+                          )
                         }
-                      />
+                      >
+                        <Img
+                          onClick={this.toggleModal}
+                          fluid={
+                            item.node.featured_media.localFile.childImageSharp
+                              .fluid
+                          }
+                        />
+                      </div>
+                      // </div>
                     );
                   })}
                 </ImageContainer>

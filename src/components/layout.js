@@ -12,6 +12,7 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import { configureAnchors } from "react-scrollable-anchor";
 import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
+
 import { useSpring, animated } from "react-spring";
 import Header from "./header";
 import FixedHeader from "./FixedHeader";
@@ -250,7 +251,7 @@ const Layout = ({ children, location, isNavOpen }) => {
             onClick={() => {
               toggleSideNav(!sideNav);
             }}
-            sideNav={sideNav}
+            open={sideNav}
             toggleSideNav={toggleSideNav}
           >
             <FaBars />

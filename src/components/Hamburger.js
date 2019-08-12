@@ -54,16 +54,16 @@ const Patty = styled(Bun)`
   transition: all 0.03s;
 `;
 
-const Hamburger = ({ isOpen, sideNav, toggleSideNav }) => {
+const Hamburger = ({ isOpen, open, toggleSideNav }) => {
   // const fade = useSpring({
   //   x: sideNav ? 0 : 100,
   // });
 
   return (
-    <Wrapper onClick={() => toggleSideNav(!sideNav)}>
-      <Bun className={sideNav ? "top-bun" : ""} />
-      <Patty className={sideNav ? "vegetarian" : ""} />
-      <Bun className={sideNav ? "bottom-bun" : ""} />
+    <Wrapper onClick={() => toggleSideNav(!open)}>
+      <Bun className={open ? "top-bun" : ""} />
+      <Patty className={open ? "vegetarian" : ""} />
+      <Bun className={open ? "bottom-bun" : ""} />
     </Wrapper>
   );
 };
