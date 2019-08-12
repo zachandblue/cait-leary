@@ -5,8 +5,6 @@ import Sound from "react-sound";
 import { FaPlay, FaPause } from "react-icons/fa";
 import styled from "styled-components";
 import { colors } from "../styles/variables";
-import getLyrics from "../lyrics/FallInLoveAgain";
-// import { ImageWrapper } from "../Elements/ImageWrapper";
 import Again from "../audio/Again.m4a";
 import ScrollableAnchor from "react-scrollable-anchor";
 import Lyrics from "./Lyrics";
@@ -164,48 +162,48 @@ const Equalizer = styled.div`
   }
 `;
 
-const LyricsWrapper = styled.div`
-  position: absolute;
-  right: 5%;
-  bottom: 6rem;
-  /* transform: translate3d(0%, -50%, 0); */
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  width: 25%;
-  .overlay {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* background: linear-gradient(black, transparent); */
-    opacity: 0.5;
-    /* z-index: -1; */
-  }
-  p {
-    color: ${colors.light};
-    font-family: "Abel";
-    font-weight: 500;
-    text-shadow: 2px 2px 9px rgba(20, 20, 20, 059);
-    font-size: 1.5rem;
-    /* line-height: 1.2rem; */
-    text-align: left;
-    padding: 0;
-    margin: 5px 0;
-  }
-  p:nth-child(1) {
-    color: #ccc;
-    text-shadow: 0px 0px 0px #222;
-    /* top: 45%; */
-  }
-  p:nth-child(2) {
-    color: ${colors.light};
-  }
-  p:nth-child(3) {
-    color: #ccc;
-    text-shadow: 0px 0px 0px #222;
-    /* top: 55%; */
-  }
-`;
+// const LyricsWrapper = styled.div`
+//   position: absolute;
+//   right: 5%;
+//   bottom: 6rem;
+//   /* transform: translate3d(0%, -50%, 0); */
+//   display: flex;
+//   justify-content: flex-start;
+//   flex-direction: column;
+//   width: 25%;
+//   .overlay {
+//     position: absolute;
+//     width: 100%;
+//     height: 100%;
+//     /* background: linear-gradient(black, transparent); */
+//     opacity: 0.5;
+//     /* z-index: -1; */
+//   }
+//   p {
+//     color: ${colors.light};
+//     font-family: "Abel";
+//     font-weight: 500;
+//     text-shadow: 2px 2px 9px rgba(20, 20, 20, 059);
+//     font-size: 1.5rem;
+//     /* line-height: 1.2rem; */
+//     text-align: left;
+//     padding: 0;
+//     margin: 5px 0;
+//   }
+//   p:nth-child(1) {
+//     color: #ccc;
+//     text-shadow: 0px 0px 0px #222;
+//     /* top: 45%; */
+//   }
+//   p:nth-child(2) {
+//     color: ${colors.light};
+//   }
+//   p:nth-child(3) {
+//     color: #ccc;
+//     text-shadow: 0px 0px 0px #222;
+//     /* top: 55%; */
+//   }
+// `;
 
 const ProgressBar = styled.div`
   position: absolute;
@@ -337,7 +335,7 @@ class MusicPlayer extends Component {
   };
 
   moveLyrics = percent => {
-    const { lyricsProgress, activeKey } = this.state;
+    const { activeKey } = this.state;
     const progress = percent / 100;
     switch (true) {
       // case progress >= 16 / 241 && progress < 23 / 241:
@@ -478,17 +476,8 @@ class MusicPlayer extends Component {
   };
 
   render() {
-    const {
-      progress,
-      status,
-      minutes,
-      seconds,
-      total,
-      position,
-      lyricsProgress,
-      activeKey,
-    } = this.state;
-    const lyrics = getLyrics();
+    const { progress, status, minutes, seconds, total, position } = this.state;
+    // const lyrics = getLyrics();
     // console.log(getLyrics());
     return (
       <StaticQuery

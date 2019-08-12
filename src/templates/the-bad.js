@@ -1,22 +1,15 @@
-import React, { Component, useState } from "react";
-import { useTransition } from "react-spring";
+import React, { Component } from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
-import BackgroundImage from "gatsby-background-image";
 import styled from "styled-components";
-import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
-
 import Layout, { HeroWrapper } from "../components/layout";
-import ImageViewer from "../components/ImageViewer";
 import Modal from "../components/Modal";
-
 import SEO from "../components/seo";
 import { colors } from "../styles/variables";
 
 const Wrapper = styled.div`
   position: relative;
   font-family: "Raleway";
-  /* max-height: 100vh; */
   overflow: scroll;
   min-height: 100vh;
   width: 100%;
@@ -73,9 +66,6 @@ const Content = styled.div`
   z-index: 2;
   position: relative;
   margin: auto;
-  /* top: 50%;
-  left: 50%;
-  transform: translate3d(-50%, 50%, 0); */
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -89,19 +79,6 @@ const Content = styled.div`
     align-items: center;
     justify-content: center;
     background-color: black;
-    /* background-image: radial-gradient(black 9px, transparent 10px),
-      repeating-radial-gradient(
-        black 0,
-        black 4px,
-        #020101 5px,
-        #020101 20px,
-        black 21px,
-        black 25px,
-        #020101 26px,
-        #020101 50px
-      );
-    background-size: 30px 30px, 90px 90px;
-    background-position: 0 0; */
   }
 `;
 
@@ -147,16 +124,9 @@ const ImageContainer = styled.div`
   justify-content: center;
   flex-wrap: wrap;
 
-  /* display: grid;
-  grid-gap: 0rem;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-auto-rows: 200px; */
-
   .photo {
     align-self: center;
     justify-self: center;
-    /* min-height: 200px;
-    max-height: 400px; */
     width: 250px;
     height: auto;
     max-height: 450px;
@@ -171,14 +141,10 @@ const ImageContainer = styled.div`
   .gatsby-image-wrapper {
     align-self: center;
     justify-self: center;
-    /* min-height: 200px;
-    max-height: 400px; */
     width: 250px;
     height: auto;
     max-height: 450px;
     height: 250px;
-    /* margin: 10px; */
-    /* transition: 1s all linear; */
 
     img {
       transition: 0.5s all linear !important;
@@ -216,15 +182,8 @@ export default class TheBad extends Component {
   componentDidMount() {}
 
   render() {
-    const { data, location } = this.props;
-    const {
-      email,
-      text,
-      loading,
-      phoneNumber6tY4bPYk,
-      modal,
-      fluid,
-    } = this.state;
+    const { location } = this.props;
+    const { modal, fluid } = this.state;
     return (
       <StaticQuery
         query={graphql`
@@ -246,6 +205,7 @@ export default class TheBad extends Component {
             allWordpressWpImage {
               edges {
                 node {
+                  id
                   featured_media {
                     localFile {
                       childImageSharp {
@@ -273,7 +233,7 @@ export default class TheBad extends Component {
           <Layout location={location}>
             <SEO title={data.wordpressPage.title} />
             <Modal toggle={this.toggleModal} on={modal}>
-              <Img fluid={fluid} />
+              {fluid && <Img fluid={fluid} />}
             </Modal>
             <Wrapper>
               <HeroWrapper>
@@ -285,26 +245,19 @@ export default class TheBad extends Component {
                 </div>
               </HeroWrapper>
               <Content>
-                <div
-                  // Tag="section"
-                  className="section"
-                  // fluid={[
-                  //   `linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))`,
-                  //   // data.videoBackground.childImageSharp.fluid,
-                  // ]}
-                  // backgroundColor={`#FFFFFF`}
-                >
+                <div className="section">
                   <ContentWrapper>
                     <h2>{data.wordpressPage.acf.video_title}</h2>
                     <p>{data.wordpressPage.acf.video_description}</p>
 
                     <VideoContainer>
                       <iframe
+                        title="I'm So Bad"
                         width="100%"
                         src={`https://www.youtube.com/embed/${data.wordpressPage.acf.video}`}
-                        frameborder="0"
+                        frameBorder="0"
                         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen
+                        allowFullScreen
                       ></iframe>
                     </VideoContainer>
                   </ContentWrapper>
@@ -314,6 +267,7 @@ export default class TheBad extends Component {
                   {data.allWordpressWpImage.edges.map(item => {
                     return (
                       <div
+                        key={item.node.id}
                         className="photo"
                         onClick={() =>
                           this.toggleModal(

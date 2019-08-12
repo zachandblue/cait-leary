@@ -1,5 +1,5 @@
-import React, { Component, Fragment, useState } from "react";
-import { useSpring, useTransition, animated } from "react-spring";
+import React, { Fragment } from "react";
+import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
 import { colors } from "../styles/variables";
 import getLyrics from "../lyrics/FallInLoveAgain";
@@ -66,7 +66,7 @@ const Lyrics = ({ progress, activeKey }) => {
             key={key}
             style={{
               ...scroll,
-              color: activeKey == key ? "white" : "#ccc",
+              color: activeKey === key ? "white" : "#ccc",
             }}
           >
             {lyrics[key]}

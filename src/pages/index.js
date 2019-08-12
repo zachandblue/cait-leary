@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "gatsby";
-import { useSpring, animated } from "react-spring";
+import React, { useState } from "react";
+// import { useSpring, animated } from "react-spring";
 
 import Doors from "../components/Doors";
 import Layout from "../components/layout";
@@ -13,17 +12,17 @@ import { sameSite } from "../components/GlobalState";
 
 const IndexPage = ({ location }) => {
   const [isNavOpen, setNavOpen] = useState(sameSite !== "no" ? false : true);
-  const navAnimation = useSpring({
-    transform: isNavOpen
-      ? `translate3d(0,0,0) scale(1) `
-      : `translate3d(100%,100%,0) scale(0.6)`,
-  });
-  const fade = useSpring({
-    from: {
-      opacity: 0,
-    },
-    opacity: 1,
-  });
+  // const navAnimation = useSpring({
+  //   transform: isNavOpen
+  //     ? `translate3d(0,0,0) scale(1) `
+  //     : `translate3d(100%,100%,0) scale(0.6)`,
+  // });
+  // const fade = useSpring({
+  //   from: {
+  //     opacity: 0,
+  //   },
+  //   opacity: 1,
+  // });
 
   // useEffect(() => {
   //   if (sameSite !== "no") {

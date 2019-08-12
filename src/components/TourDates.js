@@ -1,6 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import { StaticQuery, graphql } from "gatsby";
-import Img from "gatsby-image";
 import styled from "styled-components";
 import moment from "moment";
 import { colors } from "../styles/variables";

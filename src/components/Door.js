@@ -5,14 +5,10 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import { useSpring, animated } from "react-spring";
-import Header from "./header";
-import FixedHeader from "./FixedHeader";
 import "./layout.css";
 import { colors } from "../styles/variables";
 

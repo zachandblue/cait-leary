@@ -1,8 +1,5 @@
-import React, { useState } from "react";
-import { useSpring, animated } from "react-spring";
-import Door from "./Door";
+import React from "react";
 import styled from "styled-components";
-import { update } from "./GlobalState";
 import { colors } from "../styles/variables";
 
 const Wrapper = styled.button`

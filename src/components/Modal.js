@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { animated, useTransition } from "react-spring";
 import styled from "styled-components";
-import Hamburger from "./Hamburger";
 import { FaTimes } from "react-icons/fa";
 
 import { colors } from "../styles/variables";

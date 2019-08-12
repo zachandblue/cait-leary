@@ -2,7 +2,6 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "styled-components";
-import _ from "lodash";
 import { debounce } from "debounce";
 
 const NavItem = styled.div`
@@ -73,7 +72,7 @@ class FixedHeader extends Component {
   render() {
     // const show = this.state.pageYOffset > 100 ? true : false
     const { show } = this.state;
-    const { siteTitle, menu, location } = this.props;
+    const { menu } = this.props;
     return (
       <Header className={show ? "show" : ""}>
         <div

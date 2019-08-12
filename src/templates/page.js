@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
-import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
@@ -241,7 +241,7 @@ export default class Page extends Component {
   };
 
   render() {
-    const { data, location } = this.props;
+    const { location } = this.props;
     const { email, text, loading, phoneNumber6tY4bPYk } = this.state;
     return (
       <StaticQuery
@@ -276,7 +276,7 @@ export default class Page extends Component {
                 />
                 <Button
                   disabled={loading}
-                  loading={loading}
+                  loading={loading ? 1 : 0}
                   onClick={e => this.sendEmail(e)}
                 >
                   Submit
@@ -308,16 +308,22 @@ export default class Page extends Component {
                   <a
                     href="https://www.instagram.com/caitleary/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaInstagram className="social" />
                   </a>
                   <a
                     href="https://www.facebook.com/CaitLearyMusic"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaFacebook className="social" />
                   </a>
-                  <a href="https://twitter.com/caitleary" target="_blank">
+                  <a
+                    href="https://twitter.com/caitleary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaTwitter className="social" />
                   </a>
                 </div>

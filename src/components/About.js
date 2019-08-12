@@ -1,4 +1,4 @@
-import React, { Component, useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { StaticQuery, graphql } from "gatsby";
 import { useSpring, animated } from "react-spring";
 
@@ -11,11 +11,7 @@ const AboutSection = styled.section`
   background: ${colors.light};
   color: ${colors.dark};
   display: grid;
-  /* grid-template-columns: 1fr 1fr; */
-  /* @media only screen and (max-width: 600px) { */
   grid-template-columns: 1fr;
-  /* grid-template-rows: 1fr 1fr 1fr; */
-  /* } */
 
   h2 {
     width: 80%;
@@ -27,7 +23,6 @@ const AboutSection = styled.section`
     text-align: center;
   }
 
-  /* min-height: 500px; */
   .left {
     align-self: center;
     justify-self: center;
@@ -84,31 +79,11 @@ const AboutSection = styled.section`
 `;
 
 const About = () => {
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible] = useState(true);
   let aboutDiv = useRef();
-
   const fade = useSpring({
     opacity: isVisible ? 1 : 0,
   });
-
-  // useEffect(() => {
-  //   window.addEventListener("scroll", scrollHandler);
-  //   return () => {
-  //     window.removeEventListener("scroll", scrollHandler);
-  //   };
-  // });
-
-  const scrollHandler = e => {
-    if (
-      aboutDiv &&
-      aboutDiv.current &&
-      window.scrollY + 900 > aboutDiv.current.offsetTop
-    ) {
-      setIsVisible(true);
-    } else {
-      setIsVisible(true);
-    }
-  };
 
   return (
     <StaticQuery

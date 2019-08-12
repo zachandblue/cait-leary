@@ -13,7 +13,6 @@ import styled from "styled-components";
 import { configureAnchors } from "react-scrollable-anchor";
 import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
 
-import { useSpring, animated } from "react-spring";
 import Header from "./header";
 import FixedHeader from "./FixedHeader";
 import Hamburger from "./Hamburger";
@@ -281,16 +280,21 @@ const Layout = ({ children, location, isNavOpen }) => {
                   <a
                     href="https://www.instagram.com/caitleary/"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaInstagram className="social" />
                   </a>
                   <a
                     href="https://www.facebook.com/CaitLearyMusic"
                     target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <FaFacebook className="social" />
                   </a>
-                  <a href="https://twitter.com/caitleary" target="_blank">
+                  <a href="https://twitter.com/caitleary" target="_blank"
+                  rel="noopener noreferrer"
+                    >
+                  
                     <FaTwitter className="social" />
                   </a>
                 </div>
