@@ -232,7 +232,7 @@ export default class TheBad extends Component {
         render={data => (
           <Layout location={location}>
             <SEO title={data.wordpressPage.title} />
-            <Modal toggle={this.toggleModal} on={modal}>
+            <Modal toggle={this.toggleModal} on={modal} fluid={fluid}>
               {fluid && <Img fluid={fluid} />}
             </Modal>
             <Wrapper>

@@ -73,7 +73,7 @@ const Modal = ({ children, animation, toggle, on }) => {
   );
 };
 
-const ModalWrapper = ({ children, on, toggle }) => {
+const ModalWrapper = ({ children, on, toggle, fluid }) => {
   const transition = useTransition(on, null, {
     from: { opacity: 0 },
     enter: { opacity: 1.5 },
@@ -88,6 +88,7 @@ const ModalWrapper = ({ children, on, toggle }) => {
         ({ item, key, props: animation }) =>
           item && (
             <Modal
+              key={fluid}
               animation={animation}
               toggle={toggle}
               children={children}

@@ -40,6 +40,7 @@ const TourDatesList = styled.div`
   max-width: 800px;
   margin: auto;
   padding: 2rem;
+
   @media only screen and (max-width: 600px) {
     padding: 0.5rem;
     width: 95%;
@@ -51,6 +52,13 @@ const TourDate = styled.div`
   font-family: "Source Code Pro", monospace;
   justify-content: space-between;
   padding: 1rem;
+  p {
+    margin: 5px;
+  }
+
+  .past {
+    color: #444;
+  }
 `;
 
 const TourDates = () => (
@@ -81,11 +89,15 @@ const TourDates = () => (
           <h2>Tour Dates</h2>
           <TourDatesList>
             {filteredByDate.map(item => {
+              const past =
+                moment(item.node.acf.date) < moment(Date.now()) ? "past" : "";
               return (
                 <TourDate key={item.node.id}>
-                  <p>{moment(item.node.acf.date).format("MMM Do YYYY")}</p>
-                  <p>{item.node.acf.venue}</p>
-                  <p>{item.node.acf.city}</p>
+                  <p className={past}>
+                    {moment(item.node.acf.date).format("MMM Do YYYY")}
+                  </p>
+                  <p className={past}>{item.node.acf.venue}</p>
+                  <p className={past}>{item.node.acf.city}</p>
                 </TourDate>
               );
             })}

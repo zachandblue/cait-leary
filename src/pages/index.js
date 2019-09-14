@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Doors from "../components/Doors";
 import Layout from "../components/layout";
 import About from "../components/About";
+import Download from "../components/Download";
 import TourDates from "../components/TourDates";
 import MusicPlayer from "../components/MusicPlayer";
 import SEO from "../components/seo";

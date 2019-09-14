@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import Img from "gatsby-image";
 import styled from "styled-components";
+import moment from "moment";
 import { configureAnchors } from "react-scrollable-anchor";
 import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
 
@@ -116,7 +117,28 @@ export const HeroWrapper = styled.div`
         padding: 1rem 1rem;
       }
     }
+    h2 {
+      color: ${colors.light};
+      text-shadow: 2px 2px 10px rgba(10, 10, 10, 0.8);
+
+      font-family: "Abel";
+      font-size: 2rem;
+      font-weight: 400;
+      margin: 0;
+      @media only screen and (max-width: 750px) {
+        font-size: 1.5rem;
+        padding: 1rem 1rem;
+      }
+    }
+    .days {
+      margin-top: 40px;
+      font-size: 3rem !important;
+    }
   }
+`;
+
+const NewMusic = styled.div`
+  margin: 40px;
 `;
 
 const Footer = styled.footer`
@@ -196,6 +218,23 @@ const Footer = styled.footer`
   }
 `;
 
+const countDown = () => {
+  const eventdate = moment("2019-09-27");
+  const todaysdate = moment();
+  return eventdate.diff(todaysdate, "days");
+};
+
+const beforeReleaseDate = () => {
+  const eventdate = moment("2019-09-27");
+  const todaysdate = moment();
+  const diff = eventdate.diff(todaysdate, "days");
+  if (diff > 0) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const Layout = ({ children, location, isNavOpen }) => {
   const [sideNav, toggleSideNav] = useState(false);
 
@@ -227,6 +266,15 @@ const Layout = ({ children, location, isNavOpen }) => {
               title
               url
               object_slug
+            }
+          }
+          allWordpressWpDownload {
+            edges {
+              node {
+                acf {
+                  download_link
+                }
+              }
             }
           }
         }
@@ -264,6 +312,22 @@ const Layout = ({ children, location, isNavOpen }) => {
                 <a href="#music">
                   <button className="hero-cta-btn">LISTEN</button>
                 </a>
+                {beforeReleaseDate() ? (
+                  <NewMusic>
+                    <h2>New music available for download in...</h2>
+                    <h2 className="days">{countDown()} days</h2>
+                  </NewMusic>
+                ) : (
+                  <a
+                    style={{ marginTop: "20px" }}
+                    href={
+                      data.allWordpressWpDownload.edges[0].node.acf
+                        .download_link
+                    }
+                  >
+                    <button className="hero-cta-btn">Download</button>
+                  </a>
+                )}
               </div>
             </HeroWrapper>
           )}
@@ -291,10 +355,11 @@ const Layout = ({ children, location, isNavOpen }) => {
                   >
                     <FaFacebook className="social" />
                   </a>
-                  <a href="https://twitter.com/caitleary" target="_blank"
-                  rel="noopener noreferrer"
-                    >
-                  
+                  <a
+                    href="https://twitter.com/caitleary"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     <FaTwitter className="social" />
                   </a>
                 </div>
