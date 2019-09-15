@@ -24,7 +24,7 @@ import { colors } from "../styles/variables";
 configureAnchors({
   offset: -100,
   scrollDuration: 400,
-  keepLastAnchorHash: true,
+  keepLastAnchorHash: false,
 });
 
 export const HeroWrapper = styled.div`
