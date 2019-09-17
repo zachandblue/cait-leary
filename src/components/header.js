@@ -5,6 +5,7 @@ import { useSpring, animated, useTrail } from "react-spring";
 
 import styled from "styled-components";
 import { colors } from "../styles/variables";
+import { update } from "./GlobalState";
 
 const HeaderNav = styled(animated.header)`
   background: linear-gradient(rgba(30, 10, 10, 0.7), rgba(20, 20, 20, 0));
@@ -42,18 +43,24 @@ const NavItem = styled(animated.div)`
       content: ${props => (props.active ? "-d" : "dd")};
     }
     &.active {
-      &:before {
-        content: "✓";
-      }
+      color: white;
+      filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
     }
 
     @media only screen and (max-width: 600px) {
       font-size: 1.75rem;
+      &.active {
+        color: white;
+        filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
+        &:before {
+          content: "✓";
+        }
+      }
     }
   }
 `;
 
-const Header = ({ siteTitle, menu, location, sideNav }) => {
+const Header = ({ siteTitle, menu, location, sideNav, setNavOpen }) => {
   let innerWidth = 601;
   if (typeof window !== "undefined" && window) {
     if (window.innerWidth) {
@@ -82,8 +89,6 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  console.log("location", location);
 
   return (
     <HeaderNav
@@ -139,7 +144,6 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
                     transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
                   }}
                   key={`/${menu[index].object_slug}`}
-                  active={`/${menu[index].object_slug}` === location.pathname}
                 >
                   <Link
                     to={`/${menu[index].object_slug}`}
@@ -154,10 +158,7 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
                 </NavItem>
               ))
             : menu.map(item => (
-                <NavItem
-                  key={`/${item.object_slug}`}
-                  active={`/${item.object_slug}` === location.pathname}
-                >
+                <NavItem key={`/${item.object_slug}`}>
                   <Link
                     key={`/${item.object_slug}`}
                     to={`/${item.object_slug}`}

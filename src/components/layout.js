@@ -17,6 +17,8 @@ import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
 import Header from "./header";
 import FixedHeader from "./FixedHeader";
 import Hamburger from "./Hamburger";
+import { sameSite } from "./GlobalState";
+
 import "./layout.css";
 import { ImageWrapper } from "../Elements/ImageWrapper";
 import { colors } from "../styles/variables";
@@ -235,7 +237,7 @@ const beforeReleaseDate = () => {
   }
 };
 
-const Layout = ({ children, location, isNavOpen }) => {
+const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
   const [sideNav, toggleSideNav] = useState(false);
 
   return (
@@ -286,12 +288,14 @@ const Layout = ({ children, location, isNavOpen }) => {
             menu={data.wordpressWpApiMenusMenusItems.items}
             location={location}
             sideNav={sideNav}
+            setNavOpen={setNavOpen}
             toggleSidNav={() => toggleSideNav(false)}
           />
           <FixedHeader
             siteTitle={data.site.siteMetadata.title}
             menu={data.wordpressWpApiMenusMenusItems.items}
             location={location}
+            setNavOpen={setNavOpen}
             show={true}
           />
           <Hamburger

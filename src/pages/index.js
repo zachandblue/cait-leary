@@ -31,7 +31,7 @@ const IndexPage = ({ location }) => {
   //   }
   // });
   return (
-    <Layout location={location} isNavOpen={isNavOpen}>
+    <Layout location={location} isNavOpen={isNavOpen} setNavOpen={setNavOpen}>
       <SEO
         title="Home"
         keywords={[`Cait`, `Leary`, `Nashville`, `songwriter`, `singer`]}

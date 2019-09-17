@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import React, { Component } from "react";
 import styled from "styled-components";
 import { debounce } from "debounce";
+import { update } from "./GlobalState";
 
 const NavItem = styled.div`
   a {
@@ -73,6 +74,7 @@ class FixedHeader extends Component {
     // const show = this.state.pageYOffset > 100 ? true : false
     const { show } = this.state;
     const { menu } = this.props;
+
     return (
       <Header className={show ? "show" : ""}>
         <div
