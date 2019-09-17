@@ -265,6 +265,7 @@ export default class TheBad extends Component {
                 <h2 style={{ color: "black" }}>Gallery</h2>
                 <ImageContainer>
                   {data.allWordpressWpImage.edges.map(item => {
+                    if (!item.node.featured_media) return;
                     return (
                       <div
                         key={item.node.id}

@@ -101,7 +101,7 @@ export const HeroWrapper = styled.div`
         padding: 0.8rem 0.8rem;
       }
       @media only screen and (max-width: 600px) {
-        margin-top: 8rem;
+        /* margin-top: 8rem; */
       }
     }
     h1 {
@@ -126,7 +126,7 @@ export const HeroWrapper = styled.div`
       font-weight: 400;
       margin: 0;
       @media only screen and (max-width: 750px) {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         padding: 1rem 1rem;
       }
     }
@@ -349,7 +349,7 @@ const Layout = ({ children, location, isNavOpen }) => {
                     <FaInstagram className="social" />
                   </a>
                   <a
-                    href="https://www.facebook.com/CaitLearyMusic"
+                    href="https://www.facebook.com/CaitLeary"
                     target="_blank"
                     rel="noopener noreferrer"
                   >

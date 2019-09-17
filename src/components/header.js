@@ -30,13 +30,21 @@ const NavItem = styled(animated.div)`
   a {
     color: ${colors.light};
     font-family: "Source Code Pro", monospace;
-    font-weight: 400;
+    font-weight: ${props => (props.active ? "500" : 300)};
     text-decoration: none !important;
     padding: 1.5rem;
-    font-size: 18px;
+    font-size: ${props => (props.active ? "19px" : "18px")};
     &:hover {
       color: white;
       filter: drop-shadow(2px 2px 2px rgba(255, 255, 255, 0.2));
+    }
+    &:before {
+      content: ${props => (props.active ? "-d" : "dd")};
+    }
+    &.active {
+      &:before {
+        content: "✓";
+      }
     }
 
     @media only screen and (max-width: 600px) {
@@ -75,6 +83,8 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
     };
   }, []);
 
+  console.log("location", location);
+
   return (
     <HeaderNav
       style={
@@ -104,7 +114,9 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
           }}
         >
           <NavItem>
-            <Link to="/">Home</Link>
+            <Link to="/" className={`/` === location.pathname ? "active" : ""}>
+              Home
+            </Link>
           </NavItem>
 
           {/* {trail.map(({ x, height, ...rest }, index) => (
@@ -127,17 +139,33 @@ const Header = ({ siteTitle, menu, location, sideNav }) => {
                     transform: x.interpolate(x => `translate3d(0,${x}px,0)`),
                   }}
                   key={`/${menu[index].object_slug}`}
+                  active={`/${menu[index].object_slug}` === location.pathname}
                 >
-                  <Link to={`/${menu[index].object_slug}`}>
+                  <Link
+                    to={`/${menu[index].object_slug}`}
+                    className={
+                      `/${menu[index].object_slug}` === location.pathname
+                        ? "active"
+                        : ""
+                    }
+                  >
                     {menu[index].title}
                   </Link>
                 </NavItem>
               ))
             : menu.map(item => (
-                <NavItem key={`/${item.object_slug}`}>
+                <NavItem
+                  key={`/${item.object_slug}`}
+                  active={`/${item.object_slug}` === location.pathname}
+                >
                   <Link
                     key={`/${item.object_slug}`}
                     to={`/${item.object_slug}`}
+                    className={
+                      `/${item.object_slug}` === location.pathname
+                        ? "active"
+                        : ""
+                    }
                   >
                     {item.title}
                   </Link>

@@ -10,8 +10,10 @@ import { ImageWrapper } from "../Elements/ImageWrapper";
 const AboutSection = styled.section`
   background: ${colors.light};
   color: ${colors.dark};
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  /* grid-template-columns: 1fr; */
 
   h2 {
     width: 80%;
@@ -24,10 +26,12 @@ const AboutSection = styled.section`
   }
 
   .left {
+    flex: 1;
     align-self: center;
     justify-self: center;
     text-align: center;
     width: 300px;
+    /* min-height: 300px !important; */
     h1 {
       font-family: Abel;
       margin: 40px;
@@ -57,10 +61,14 @@ const AboutSection = styled.section`
   .mobile-only {
     display: none;
     @media only screen and (max-width: 600px) {
+      flex: 1;
+
       display: block;
     }
   }
   .right {
+    flex: 1;
+
     display: grid;
     .gatsby-image-wrapper {
       align-self: center;
@@ -70,7 +78,7 @@ const AboutSection = styled.section`
       margin-bottom: 20vh;
 
       @media only screen and (max-width: 600px) {
-        height: auto;
+        height: 100vw;
         width: 100%;
         margin-bottom: 0vh;
       }
@@ -111,9 +119,9 @@ const About = () => {
       `}
       render={data => (
         <AboutSection>
-          <ImageWrapper>
-            {/* <Img fluid={data.file.childImageSharp.fluid} /> */}
-          </ImageWrapper>
+          {/* <ImageWrapper>
+            <Img fluid={data.file.childImageSharp.fluid} />
+          </ImageWrapper> */}
           <animated.div className="left" style={fade}>
             <h2 ref={aboutDiv}>{data.wordpressWpAbout.title}</h2>
             <p>{data.wordpressWpAbout.acf.about}</p>

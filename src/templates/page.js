@@ -298,11 +298,7 @@ export default class Page extends Component {
                   onChange={this.handleTextInput}
                 />
 
-                <p style={{ order: 4 }}>
-                  Whether you're a fan of my music or you just would like to say
-                  hi, I'd love to hear from you. Follow me on social media or
-                  simply use this contact form to send me an email.
-                </p>
+                <p style={{ order: 4 }}>Talk to me</p>
 
                 <div className="socials" style={{ order: 5 }}>
                   <a
