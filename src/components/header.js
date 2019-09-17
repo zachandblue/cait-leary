@@ -119,7 +119,10 @@ const Header = ({ siteTitle, menu, location, sideNav, setNavOpen }) => {
           }}
         >
           <NavItem>
-            <Link to="/" className={`/` === location.pathname ? "active" : ""}>
+            <Link
+              to="/"
+              className={location && `/` === location.pathname ? "active" : ""}
+            >
               Home
             </Link>
           </NavItem>
@@ -148,6 +151,7 @@ const Header = ({ siteTitle, menu, location, sideNav, setNavOpen }) => {
                   <Link
                     to={`/${menu[index].object_slug}`}
                     className={
+                      location &&
                       `/${menu[index].object_slug}` === location.pathname
                         ? "active"
                         : ""
@@ -163,7 +167,7 @@ const Header = ({ siteTitle, menu, location, sideNav, setNavOpen }) => {
                     key={`/${item.object_slug}`}
                     to={`/${item.object_slug}`}
                     className={
-                      `/${item.object_slug}` === location.pathname
+                      location && `/${item.object_slug}` === location.pathname
                         ? "active"
                         : ""
                     }
