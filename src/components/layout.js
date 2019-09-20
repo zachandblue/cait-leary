@@ -12,7 +12,13 @@ import Img from "gatsby-image";
 import styled from "styled-components";
 import moment from "moment";
 import { configureAnchors } from "react-scrollable-anchor";
-import { FaFacebook, FaInstagram, FaTwitter, FaBars } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaBars,
+  FaSpotify,
+} from "react-icons/fa";
 
 import Header from "./header";
 import FixedHeader from "./FixedHeader";
@@ -140,7 +146,7 @@ export const HeroWrapper = styled.div`
 `;
 
 const NewMusic = styled.div`
-  margin: 40px;
+  margin: 50px;
 `;
 
 const Footer = styled.footer`
@@ -275,6 +281,7 @@ const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
               node {
                 acf {
                   download_link
+                  button_name
                 }
               }
             }
@@ -329,7 +336,12 @@ const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
                         .download_link
                     }
                   >
-                    <button className="hero-cta-btn">Download</button>
+                    <button className="hero-cta-btn">
+                      {
+                        data.allWordpressWpDownload.edges[0].node.acf
+                          .button_name
+                      }
+                    </button>
                   </a>
                 )}
               </div>
@@ -359,12 +371,19 @@ const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
                   >
                     <FaFacebook className="social" />
                   </a>
-                  <a
+                  {/* <a
                     href="https://twitter.com/caitleary"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FaTwitter className="social" />
+                  </a> */}
+                  <a
+                    href="https://open.spotify.com/artist/1ERYRLjkTwjbE6ECkKDILz?si=BGFvN2DeT5KO9pkqhr-_aw"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaSpotify className="social" />
                   </a>
                 </div>
                 <div className="copyright">
