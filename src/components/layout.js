@@ -104,6 +104,10 @@ export const HeroWrapper = styled.div`
         background: ${colors.light};
         color: #471548;
       }
+      &:focus {
+        outline: none;
+        box-shadow: 4px 4px 10px rgba(10, 10, 10, 0.8);
+      }
       @media only screen and (max-width: 750px) {
         font-size: 1.65rem;
         padding: 0.8rem 0.8rem;
@@ -111,6 +115,13 @@ export const HeroWrapper = styled.div`
       @media only screen and (max-width: 600px) {
         /* margin-top: 8rem; */
       }
+    }
+
+    .spotify {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+      transform: scale(1.1);
     }
     h1 {
       color: ${colors.light};
@@ -323,6 +334,7 @@ const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
                 <a href="#music">
                   <button className="hero-cta-btn">LISTEN</button>
                 </a>
+
                 {beforeReleaseDate() ? (
                   <NewMusic>
                     <h2>New music available for download in...</h2>
@@ -344,6 +356,17 @@ const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
                     </button>
                   </a>
                 )}
+                <div class="spotify">
+                  <iframe
+                    src="https://open.spotify.com/follow/1/?uri=spotify:artist:1jECbQgWzYppXgukwEIw9q&size=basic&theme=dark&show-count=0"
+                    width="100"
+                    height="35"
+                    scrolling="no"
+                    frameborder="0"
+                    style={{ border: "none", overflow: "hidden" }}
+                    allowtransparency="true"
+                  ></iframe>
+                </div>
               </div>
             </HeroWrapper>
           )}

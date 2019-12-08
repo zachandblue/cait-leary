@@ -9,7 +9,7 @@ const Wrapper = styled.button`
   z-index: 850;
   right: 15px;
   top: 20px;
-  transition: all 0.5s;
+  transition: all 0.3s;
   &:focus {
     outline: none;
   }

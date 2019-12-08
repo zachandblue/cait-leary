@@ -176,6 +176,7 @@ const Header = ({ siteTitle, menu, location, sideNav, setNavOpen }) => {
                   </Link>
                 </NavItem>
               ))}
+
           {/* {trail.map(({ x, height, ...rest }, index) => (
             <NavItem
               style={{
