@@ -85,6 +85,14 @@ export const HeroWrapper = styled.div`
       width: 100%;
     }
 
+    .cta-row {
+      display: flex;
+      flex-direction: row;
+      @media only screen and (max-width: 600px) {
+        flex-direction: column;
+      }
+    }
+
     .hero-cta-btn {
       background: transparent;
       background: rgba(0, 0, 0, 0.2);
@@ -99,6 +107,7 @@ export const HeroWrapper = styled.div`
       font-size: 2.5vw;
       transition: all 0.4s;
       font-weight: 550;
+      margin: 0 20px;
 
       &:hover {
         background: ${colors.light};
@@ -114,6 +123,7 @@ export const HeroWrapper = styled.div`
       }
       @media only screen and (max-width: 600px) {
         /* margin-top: 8rem; */
+        margin: 20px 0;
       }
     }
 
@@ -157,7 +167,11 @@ export const HeroWrapper = styled.div`
 `;
 
 const NewMusic = styled.div`
-  margin: 50px;
+  margin:50px;
+  /* @media only screen and (max-width: 600px) {
+    margin: 50px;
+    /* margin-top: 8rem; */
+  } */
 `;
 
 const Footer = styled.footer`
@@ -331,31 +345,33 @@ const Layout = ({ children, location, isNavOpen, setNavOpen }) => {
               <Img fluid={data.image1.childImageSharp.fluid} />
               <div className="hero-cta">
                 <h1>{data.site.siteMetadata.title}</h1>
-                <a href="#music">
-                  <button className="hero-cta-btn">LISTEN</button>
-                </a>
-
-                {beforeReleaseDate() ? (
-                  <NewMusic>
-                    <h2>New music available for download in...</h2>
-                    <h2 className="days">{countDown()} days</h2>
-                  </NewMusic>
-                ) : (
-                  <a
-                    style={{ marginTop: "20px" }}
-                    href={
-                      data.allWordpressWpDownload.edges[0].node.acf
-                        .download_link
-                    }
-                  >
-                    <button className="hero-cta-btn">
-                      {
-                        data.allWordpressWpDownload.edges[0].node.acf
-                          .button_name
-                      }
-                    </button>
+                <div className="cta-row">
+                  <a href="#music">
+                    <button className="hero-cta-btn">LISTEN</button>
                   </a>
-                )}
+
+                  {beforeReleaseDate() ? (
+                    <NewMusic>
+                      <h2>New music available for download in...</h2>
+                      <h2 className="days">{countDown()} days</h2>
+                    </NewMusic>
+                  ) : (
+                    <a
+                      // style={{ marginTop: "20px" }}
+                      href={
+                        data.allWordpressWpDownload.edges[0].node.acf
+                          .download_link
+                      }
+                    >
+                      <button className="hero-cta-btn">
+                        {
+                          data.allWordpressWpDownload.edges[0].node.acf
+                            .button_name
+                        }
+                      </button>
+                    </a>
+                  )}
+                </div>
                 <div class="spotify">
                   <iframe
                     src="https://open.spotify.com/follow/1/?uri=spotify:artist:1jECbQgWzYppXgukwEIw9q&size=basic&theme=dark&show-count=0"
