@@ -19,7 +19,7 @@
     "gatsby-plugin-sharp": "^2.0.32",
     "gatsby-plugin-styled-components": "^3.0.7",
     "gatsby-source-filesystem": "^2.0.28",
-    "gatsby-source-wordpress": "^3.0.51",
+    "gatsby-source-wordpress": "^4.0.8",
     "gatsby-transformer-sharp": "^2.1.17",
     "intersection-observer": "^0.7.0",
     "lodash": "^4.17.11",
